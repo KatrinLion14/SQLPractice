@@ -1,4 +1,4 @@
-﻿using UniversityWebApi.Domain;
+using UniversityWebApi.Domain;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -23,7 +23,7 @@ namespace UniversityWebApi.Repositories
             connection.Open();
 
             using SqlCommand sqlCommand = connection.CreateCommand();
-            sqlCommand.CommandText = "insert into [Department] values ([@name], [@office], [@address], [@phonenumber])";
+            sqlCommand.CommandText = "insert into [Department] values (@name, @office, @address, @phonenumber)";
             sqlCommand.Parameters.Add("@office", SqlDbType.Int).Value = department.Office;
             sqlCommand.Parameters.Add("@address", SqlDbType.NVarChar, 100).Value = department.Address;
             sqlCommand.Parameters.Add("@phonenumber", SqlDbType.NVarChar, 14).Value = department.PhoneNumber;
@@ -43,7 +43,7 @@ namespace UniversityWebApi.Repositories
 
             using SqlCommand sqlCommand = connection.CreateCommand();
             sqlCommand.CommandText = "delete from [Department] where [Name] = @name";
-            sqlCommand.Parameters.Add("@name", SqlDbType.Int).Value = department.Name;
+            sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 100).Value = department.Name;
             sqlCommand.ExecuteNonQuery();
         }
 
