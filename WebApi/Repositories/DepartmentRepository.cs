@@ -1,4 +1,4 @@
-using UniversityWebApi.Domain;
+﻿using UniversityWebApi.Domain;
 using System.Data.SqlClient;
 using System.Data;
 
