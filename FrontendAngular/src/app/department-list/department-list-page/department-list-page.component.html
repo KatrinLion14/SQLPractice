@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-title>Departments</mat-card-title>
+  <mat-list>
+    <app-department-list-item *ngFor="let department of departmentList"
+                       [item]="department"
+                       role="listitem"
+                       (delete)="deleteDepartment($event)">
+    </app-department-list-item>
+</mat-list>
+  <mat-card-actions>
+      <form [formGroup]="form">
+          <mat-form-field class="example-form-field" appearance="fill" style="margin: 0 12px">
+              <mat-label>Name</mat-label>
+              <input formControlName="name" matInput type="text">
+              <button *ngIf="nameControl" matSuffix mat-icon-button aria-label="Clear"
+                      (click)="form.controls['name'].setValue(null)">
+                  <mat-icon>close</mat-icon>
+              </button>
+          </mat-form-field>
+          <mat-form-field class="example-form-field" appearance="fill" style="margin: 0 12px">
+            <mat-label>Office</mat-label>
+            <input formControlName="office" matInput type="number">
+            <button *ngIf="officeControl" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="form.controls['office'].setValue(null)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="fill" style="margin: 0 12px">
+          <mat-label>Address</mat-label>
+          <input formControlName="address" matInput type="text">
+          <button *ngIf="addressControl" matSuffix mat-icon-button aria-label="Clear"
+                  (click)="form.controls['address'].setValue(null)">
+              <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+      <mat-form-field class="example-form-field" appearance="fill" style="margin: 0 12px">
+        <mat-label>Phone Number</mat-label>
+        <input formControlName="phoneNumber" matInput type="text">
+        <button *ngIf="phoneNumberControl" matSuffix mat-icon-button aria-label="Clear"
+                (click)="form.controls['phoneNumber'].setValue(null)">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+      </form>
+      <button mat-flat-button color="primary" (click)="addItem()" style="margin: 0 10px">Add</button>
+      <button mat-flat-button color="primary" (click)="updateDepartment()" style="margin: 0 10px">Update</button>
+  </mat-card-actions>
+</mat-card>
